@@ -1,0 +1,40 @@
+name: Build and Upload Artifact
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up MSVC
+      uses: ilammy/msvc-dev-cmd@v1
+      with:
+        arch: x64
+
+    - name: Install dependencies
+      run: |
+        vcpkg install rabbitmq-c:x64-windows
+        vcpkg install openssl:x64-windows
+
+    - name: Build rmqcpp
+      run: |
+        mkdir build
+        cd build
+        cmake -A x64 ..
+        cmake --build . --config Release
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: rmqcpp
+        path: build/Release/rmqcpp.dll
