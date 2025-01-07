@@ -23,20 +23,12 @@ jobs:
 
     - name: Install dependencies
       run: |
-        vcpkg install rabbitmq-c:x64-windows
-        vcpkg install openssl:x64-windows
+        vcpkg install rmqcpp
       env: 
         VCPKG_ROOT: "c:/vcpkg"
-
-    - name: Build rmqcpp
-      run: |
-        mkdir build
-        cd build
-        cmake -A x64 ..
-        cmake --build . --config Release
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
         name: rmqcpp
-        path: build/Release/rmqcpp.dll
+        path: c:/vcpkg
