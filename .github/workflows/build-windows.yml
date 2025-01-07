@@ -25,6 +25,7 @@ jobs:
       run: |
         vcpkg install rabbitmq-c:x64-windows
         vcpkg install openssl:x64-windows
+      env: VCPKG_ROOT: "c:/vcpkg"
 
     - name: Build rmqcpp
       run: |
