@@ -36,4 +36,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: rmqcpp
-        path: c:/vcpkg
+        path: d:/a
