@@ -23,7 +23,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        vcpkg install bde boost-asio boost-iostreams gtest openssl
+        vcpkg install bde boost-asio bzip2 liblzma zlib zstd boost-iostreams gtest openssl
 
     - name: Build rmqcpp
       run: |
