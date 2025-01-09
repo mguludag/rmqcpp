@@ -23,9 +23,14 @@ jobs:
 
     - name: Install dependencies
       run: |
-        vcpkg install rmqcpp
-      env: 
-        VCPKG_ROOT: "c:/vcpkg"
+        vcpkg install bde boost-asio boost-iostreams gtest openssl
+
+    - name: Build rmqcpp
+      run: |
+        mkdir build
+        cd build
+        cmake -A x64 ..
+        cmake --build . --config Release
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
