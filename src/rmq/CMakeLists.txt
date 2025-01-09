@@ -5,7 +5,7 @@ add_subdirectory(rmqp)
 add_subdirectory(rmqamqp)
 add_subdirectory(rmqa)
 
-add_library(rmq STATIC
+add_library(rmq SHARED
     $<TARGET_OBJECTS:rmqamqpt>
     $<TARGET_OBJECTS:rmqt>
     $<TARGET_OBJECTS:rmqio>
